@@ -1,14 +1,23 @@
 from cmath import log
-from distutils.sysconfig import PREFIX
 import discord
 from dotenv import load_dotenv
 import os
 load_dotenv()
 
-PREFIX = os.environ['PREFIX']
-TOKEN = os.environ['TOKEN']
+TOKEN = 'MTE4OTgxNjQ5NTA0ODQ5OTI1MA.GDUHsV.r-3AZa4fS63VSuc5he9lbIv6hvXioeXAogwZtc'
+GUILD_ID = '656116379967291393'  # 특정 서버의 ID
 
-client = discord.Client()
+# 사용자 정보 ID (마스터)
+masterUser ='396881467164196886'
+
+# 관리 채널 (봇 사용자 등록 현황로그) : 1213831753450659880
+manage_code = '1213831753450659880'
+
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
@@ -19,10 +28,10 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content == f'{PREFIX}call':
+    if message.content == 'call':
         await message.channel.send("callback!")
 
-    if message.content.startswith(f'{PREFIX}hello'):
+    if message.content.startswith('hello'):
         await message.channel.send('Hello!')
 
 
