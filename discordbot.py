@@ -15,7 +15,7 @@ manage_code = '1213831753450659880'
 
 
 intents = discord.Intents.default()
-intents.message_content = True
+intents.message = True
 
 client = discord.Client(intents=intents)
 
